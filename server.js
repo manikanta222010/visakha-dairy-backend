@@ -3,7 +3,7 @@ const cors = require('cors');
 const sql = require('mssql');
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 const app = express();
 dotenv.config()
@@ -27,7 +27,7 @@ app.use(express.json());
 
 
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 
 function generateToken(user) {
