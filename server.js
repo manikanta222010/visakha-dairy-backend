@@ -361,16 +361,6 @@ app.get('/bcc/:bccCode/societies/:fromDate/:toDate', async (req, res) => {
   }
 });
 
-app.get('/cattle-information', async (req, res) => {
-  try {
-    let pool = await sql.connect(config);
-    let result = await pool.request().query('SELECT TOP 300 * FROM CATTLE_INFORMATION');
-    res.send(result.recordset);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err);
-  }
-});
 
 app.get('/milk-receipts/bcc/:bccCode/societies/:societyCode/producers/:pno/:fromDate/:toDate', async (req, res) => {
   try {
