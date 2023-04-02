@@ -41,7 +41,7 @@ function generateToken(user) {
   return jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 }
 
-app.post('/login', async (req, res) => {
+app.post('/', async (req, res) => {
 
   let pool = await sql.connect(config);
   let result = await pool.request().query(`SELECT * FROM USERS_MASTER WHERE user_name = '${req.body.user_name}' AND password = '${req.body.password}'`);
@@ -71,7 +71,7 @@ function verifyToken(req, res, next) {
   }
 }
 
-app.get('/', verifyToken, async (req, res) => {
+app.get('/home', verifyToken, async (req, res) => {
   try {
     const user = req.user
     res.send(user[0]);
